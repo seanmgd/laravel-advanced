@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//
+// Facades
 Route::get('/postcards', function () {
     $postcardService = new PostcardSendingService('fra', 4, 6);
     $postcardService->hello('Hello from Paris', 'test@test.fr');
@@ -27,3 +29,8 @@ Route::get('/postcards', function () {
 Route::get('/facades', function () {
     Postcard::hello('Hello from Paris with Facades', 'facades@test.fr');
 });
+
+//
+// View Composer
+Route::get('channels', 'ChannelController@index');
+Route::get('posts', 'PostController@create');
