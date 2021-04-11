@@ -2,7 +2,9 @@
 
 use App\Facades\Postcard;
 use App\Services\PostcardSendingService;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,10 @@ Route::get('/posts', 'PostController@create');
 //
 // Service Container
 Route::get('/pay', 'PayOrderController@store');
+
+//
+// Macros
+Route::get('/macro', function() {
+    return Str::partNumber(12345) . ' ' . Str::prefix(1234, 'prefix');
+    return Response::errorJson(); // Custom macro create on AppServiceProvider.php
+});
