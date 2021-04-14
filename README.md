@@ -7,3 +7,5 @@ Some advanced features implemented to prepare the Laravel Certification
 3rd - [Service Container](https://github.com/seanmgd/laravel-advanced/commit/d926879c1a13930b139c40b749443e4ae4744c25)
 
 4th - [Macros](https://github.com/seanmgd/laravel-advanced/commit/2f7a165eab812655de9a332386ecd04efe3647e7)
+
+5th - [Pipelines](https://github.com/seanmgd/laravel-advanced/commit/2b9ce5c481240f94c0afc07bff5920e4f13e8be7)
