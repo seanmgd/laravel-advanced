@@ -35,7 +35,11 @@ Route::get('/facades', function () {
 //
 // View Composer
 Route::get('/channels', 'ChannelController@index');
-Route::get('/posts', 'PostController@create');
+Route::get('/posts/create', 'PostController@create');
+
+//
+// Pipelines
+Route::get('/posts', 'PostController@index');
 
 //
 // Service Container
