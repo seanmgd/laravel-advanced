@@ -52,12 +52,12 @@ class AppServiceProvider extends ServiceProvider
         // View composer
 
         // Option 1: Every single view - Do not share like this way unless if it is necessary
-        View::share('channels', Channel::orderBy('name')->get());
+//        View::share('channels', Channel::orderBy('name')->get());
 
         // Option 2: Specify views with wildcards
-        View::composer(['channel.*', 'post.create'], function ($view) {
-            $view->with('channels', Channel::orderBy('name')->get());
-        });
+//        View::composer(['channel.*', 'post.create'], function ($view) {
+//            $view->with('channels', Channel::orderBy('name')->get());
+//        });
 
         // Option 3: Dedicated class - see app/Http/View/Composers/ChannelsComposer.php
         View::composer(['partials.channels.*'], ChannelsComposer::class);

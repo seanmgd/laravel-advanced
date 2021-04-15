@@ -40,6 +40,7 @@ Route::get('/posts/create', 'PostController@create');
 //
 // Pipelines
 Route::get('/posts', 'PostController@index');
+// Url example /posts?sort=desc&active=0&max_count=3&page=1
 
 //
 // Service Container
@@ -47,7 +48,14 @@ Route::get('/pay', 'PayOrderController@store');
 
 //
 // Macros
-Route::get('/macro', function() {
+Route::get('/macro', function () {
     return Str::partNumber(12345) . ' ' . Str::prefix(1234, 'prefix');
     return Response::errorJson(); // Custom macro create on AppServiceProvider.php
 });
+
+//
+// Repository Pattern
+Route::get('/customers', 'CustomerController@index');
+Route::get('/customer/{customerId}', 'CustomerController@show');
+Route::get('/customer/{customerId}/update', 'CustomerController@update');
+Route::get('/customer/{customerId}/delete', 'CustomerController@destroy');
