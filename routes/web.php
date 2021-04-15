@@ -2,8 +2,10 @@
 
 use App\Facades\Postcard;
 use App\Services\PostcardSendingService;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 
 /*
@@ -59,3 +61,51 @@ Route::get('/customers', 'CustomerController@index');
 Route::get('/customer/{customerId}', 'CustomerController@show');
 Route::get('/customer/{customerId}/update', 'CustomerController@update');
 Route::get('/customer/{customerId}/delete', 'CustomerController@destroy');
+
+//
+// Lazy Collection and Php generator
+Route::get('lazy', function () {
+//    $collection = Collection::times(3000000) // Will fail
+//        ->map(function ($number) {
+//            return pow(2, $number);
+//        })
+//        ->all();
+
+    $collection = LazyCollection::times(3000000) // Will not fail
+    ->map(function ($number) {
+        return pow(2, $number);
+    })
+        ->all();
+    // TIPS: If your want use ::all() static method for Lazy Collection, use ::cursor() instead
+    // Eg: User::cursor();
+
+    return 'success!';
+});
+
+Route::get('/generator', function () {
+    function itWillCrash($number)
+    {
+        $actions = [];
+
+        for ($i = 1; $i < $number; $i++) {
+            $actions[] = $i;
+        }
+
+        return $actions;
+    }
+
+    function itWillNotCrash($number)
+    {
+        for ($i = 1; $i < $number; $i++) { // It is completely the same for the LazyCollection
+            yield $i; // Yield is like return but used for generators
+        }
+    }
+
+    // return get_class_methods(itWillNotCrash(1)); // To know which methods generator have
+
+    foreach (itWillNotCrash(10000000) as $number) { // Switch function to watch with/without yield generator
+        if ($number % 1000 == 0) {
+            dump("crash test");
+        };
+    };
+});
