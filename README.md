@@ -1,4 +1,5 @@
-Some advanced features implemented to prepare the Laravel Certification. Linked to this another repo [https://github.com/seanmgd/laravel-certification](https://github.com/seanmgd/laravel-certification)
+Some advanced features implemented to prepare the Laravel Certification.
+Linked to this another repo [https://github.com/seanmgd/laravel-certification](https://github.com/seanmgd/laravel-certification)
 
 1st - [Facades](https://github.com/seanmgd/laravel-advanced/commit/2fd78be2e9ffefabd7b5a20538439220082a5f64)
 
